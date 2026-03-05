@@ -33,5 +33,11 @@ pipeline {
                 sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG} ${DOCKERHUB_REPO}:${IMAGE_TAG} || true'
             }
         }
+        stage('Clean workspace') {
+            steps {
+                echo 'Cleaning up workspace...'
+                cleanWs()
+            }
+        }
     }
 }
