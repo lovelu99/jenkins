@@ -4,8 +4,8 @@ pipeline {
         stage('Build'){
             steps {
                  echo 'building and tagging for dockerhub..'
-                docker build -t myapp:${env.BUILD_NUMBER} .
-                docker tag myapp:${env.BUILD_NUMBER} noakhali99/myapp:${env.BUILD_NUMBER}
+                sh 'docker build -t myapp:${BUILD_NUMBER} .'
+                sh 'docker tag myapp:${BUILD_NUMBER} noakhali99/myapp:${BUILD_NUMBER}'
 
             }
         }
