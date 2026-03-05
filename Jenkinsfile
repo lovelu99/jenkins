@@ -16,9 +16,15 @@ pipeline {
 
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'uname')]) {
                     sh 'docker login -u $uname -p $password'
-                    sh 'docker push noakhali99/myapp:${env.BUILD_NUMBER}'
+                    sh 'docker push noakhali99/myapp:${BUILD_NUMBER}'
                     sh 'docker logout'
                     }
+            }
+        }
+        stages ('Clean Images') {
+            steps {
+                echo 'Cleaning up local images...'
+                sh 'docker rmi myapp:${BUILD_NUMBER} noakhali99/myapp:${BUILD_NUMBER} || true'
             }
         }
     }
