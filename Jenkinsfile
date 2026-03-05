@@ -5,7 +5,7 @@ pipeline {
             steps {
                  echo 'building and tagging for dockerhub..'
                 sh 'docker build -t myapp:${BUILD_NUMBER} .'
-                sh 'docker tag myapp:${BUILD_NUMBER} noakhali99/myapp:${BUILD_NUMBER}'
+                sh 'docker tag myapp:${BUILD_NUMBER} noakhali/myapp:${BUILD_NUMBER}'
 
             }
         }
